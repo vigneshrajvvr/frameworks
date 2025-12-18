@@ -12,8 +12,7 @@ graph.add_edge("process_node", END)
 
 graph = graph.compile()
 
-user_input = input("Enter:")
 graph.invoke({
-    "messages": [HumanMessage(content=user_input)]
+    "messages": []
 })
 

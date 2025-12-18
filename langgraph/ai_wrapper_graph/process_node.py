@@ -21,6 +21,13 @@ chat_model = ChatHuggingFace(llm=llm)
 
 def process_node(state: AgentState) -> AgentState:
     """To get the openai api responses"""
-    response=chat_model.invoke(state["messages"])
-    print(f"\nAI: {response.content}")
+    print("Conversation Started...")
+    user_input=input("Enter:")
+    while user_input != "exit":
+        response=chat_model.invoke(
+            [HumanMessage(content=user_input)]
+        )
+        print(f"\nAI: {response.content}")
+        user_input=input("Enter:")
+    print("Conversation Ended!")
     return state
